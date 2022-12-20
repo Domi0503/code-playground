@@ -1,0 +1,15 @@
+@use "../../../node_modules/nord/src/sass/nord.scss";
+
+.CodeBox-container {
+  min-width: 800px;
+  height: 80vh;
+  background-color: nord.$nord1;
+  border-radius: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  border: 1px solid nord.$nord3;
+
+  .CodeBox-file-track {
+    display: flex;
+  }
+}

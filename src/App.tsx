@@ -1,34 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import "./App.scss";
+import CodeBox from "./components/CodeBox/CodeBox";
+import Navbar from "./components/Navbar/Navbar";
+import PreviewBox from "./components/PreviewBox/PreviewBox";
+import codeExamples from "./codeExamples";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const previewCode = () => {
+    const codePreviewElement: any = getCodePreview();
+    if (codePreviewElement != undefined) {
+      codePreviewElement.contentDocument.body.innerHTML =
+        codeExamples["index.html"].value;
+    }
+  };
+
+  //TODO: Find a better solution
+  const getCodePreview = () => {
+    const codePreview: any = document.getElementById(
+      "code-preview"
+    ) as HTMLIFrameElement;
+
+    return codePreview;
+  };
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Navbar>
+        <h1>
+          Learn to Code <span>&lt;/&gt;</span>
+        </h1>
+        <button onClick={previewCode}>RUN</button>
+      </Navbar>
+      <div className="App-codeBox-n-previewBox-container">
+        <CodeBox />
+        <PreviewBox />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
