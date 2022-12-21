@@ -17,9 +17,10 @@ html {
     gap: 1rem;
   }
 
-  .navbar-subtext {
-    color: nord.$nord9;
-    font-weight: bold;
+  .navbar-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .preview-btn {

@@ -34,8 +34,8 @@ function App() {
   return (
     <div className="App">
       <Navbar>
-        <h1>
-          Learn to Code <span className="navbar-subtext">&lt;/&gt;</span>
+        <h1 className="navbar-heading">
+          Learn to Code <img src="/favicon.svg" width={48} height={48} />
         </h1>
         <button onClick={previewCode} className="preview-btn">
           Run
