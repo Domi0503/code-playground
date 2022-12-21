@@ -39,7 +39,7 @@ function App() {
         </h1>
         <button onClick={previewCode} className="preview-btn">
           Run
-          <FontAwesomeIcon icon={faPlay} />
+          <FontAwesomeIcon icon={faPlay} size={"xs"} />
         </button>
       </Navbar>
       <div className="App-codeBox-n-previewBox-container">

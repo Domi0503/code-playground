@@ -9,13 +9,22 @@ import "./CodeBox.scss";
 import FileButton from "../Chip/Chip";
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import codeExamples from "../../codeExamples";
+import { emmetCSS, emmetHTML } from "emmet-monaco-es";
 
 const CodeBox = forwardRef((props: any, _ref) => {
+  const [isEditorReady, setIsEditorReady] = useState(false);
+
   const [openEditors, setOpenEditors] = useState<any>([]);
   const [fileName, setFileName] = useState("index.html");
   const [codeValue, setCodeValue] = useState("");
 
   const file = codeExamples[fileName];
+
+  const handleEditorDidMount = () => {
+    emmetHTML();
+    emmetCSS();
+    setIsEditorReady(true);
+  };
 
   useEffect(() => {
     setOpenEditors([
@@ -65,6 +74,8 @@ const CodeBox = forwardRef((props: any, _ref) => {
         defaultValue={file.value}
         onChange={handleEditorChange}
         loading={"Loading your code, please wait..."}
+        options={{ minimap: { enabled: false }, rulers: [80] }}
+        onMount={handleEditorDidMount}
       />
     </div>
   );
