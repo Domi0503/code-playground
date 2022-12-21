@@ -16,4 +16,28 @@ html {
     display: flex;
     gap: 1rem;
   }
+
+  .navbar-subtext {
+    color: nord.$nord9;
+    font-weight: bold;
+  }
+
+  .preview-btn {
+    display: flex;
+    gap: 8px;
+    font-weight: bold;
+    color: nord.$nord4;
+    background-color: nord.$nord14;
+    border: 1px solid nord.$nord14;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    margin-left: 31.5rem;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+
+    &:active {
+      border: 2px solid darken(nord.$nord14, 50%);
+    }
+  }
 }

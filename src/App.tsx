@@ -1,15 +1,18 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./App.scss";
 import CodeBox from "./components/CodeBox/CodeBox";
 import Navbar from "./components/Navbar/Navbar";
 import PreviewBox from "./components/PreviewBox/PreviewBox";
-import codeExamples from "./codeExamples";
+import { useRef } from "react";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
+  const childStateRef = useRef<any>();
+
   const previewCode = () => {
     const codePreviewElement: any = getCodePreview();
     if (codePreviewElement != undefined) {
-      codePreviewElement.contentDocument.body.innerHTML =
-        codeExamples["index.html"].value;
+      codePreviewElement.contentDocument.body.innerHTML = getCodeValue();
     }
   };
 
@@ -22,16 +25,25 @@ function App() {
     return codePreview;
   };
 
+  const getCodeValue = () => {
+    const childState = childStateRef.current?.getCode();
+
+    return childState;
+  };
+
   return (
     <div className="App">
       <Navbar>
         <h1>
-          Learn to Code <span>&lt;/&gt;</span>
+          Learn to Code <span className="navbar-subtext">&lt;/&gt;</span>
         </h1>
-        <button onClick={previewCode}>RUN</button>
+        <button onClick={previewCode} className="preview-btn">
+          Run
+          <FontAwesomeIcon icon={faPlay} />
+        </button>
       </Navbar>
       <div className="App-codeBox-n-previewBox-container">
-        <CodeBox />
+        <CodeBox ref={childStateRef} />
         <PreviewBox />
       </div>
     </div>
